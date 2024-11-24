@@ -100,9 +100,38 @@ const updateSingleBook = async (
   }
 };
 
+const deleteSingleBook = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { productId: bookId } = req.params;
+
+    // Delete the book
+    const result = await BookServices.deleteSingleBook(bookId);
+
+    if (!result.success) {
+      return res.status(404).json({
+        success: false,
+        message: result.message,
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: result.message,
+      data: result.data,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const BookControllers = {
   insertNewBook,
   getAllBooks,
   getSingleBook,
   updateSingleBook,
+  deleteSingleBook,
 };

@@ -62,9 +62,30 @@ const updateSingleBook = async (bookId: string, data: Partial<IBook>) => {
   }
 };
 
+const deleteSingleBook = async (bookId: string) => {
+  try {
+    const book = await Books.findById(bookId);
+
+    if (!book) {
+      return { success: false, message: 'Book not found', data: null };
+    }
+
+    const deletedBook = await Books.findByIdAndDelete(bookId, { new: true });
+
+    return {
+      success: true,
+      message: 'Book deleted successfully',
+      data: deletedBook,
+    };
+  } catch (error) {
+    throw new Error('Failed to delete book');
+  }
+};
+
 export const BookServices = {
   insertNewBook,
   getAllBooks,
   getSingleBook,
   updateSingleBook,
+  deleteSingleBook,
 };
