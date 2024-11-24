@@ -1,7 +1,7 @@
 {
-  "name": "first-project",
+  "name": "bookshop-l2a2-rp",
   "version": "1.0.0",
-  "description": "",
+  "description": "This server belongs to bookshop authority.",
   "main": "index.js",
   "scripts": {
     "start:prod": "node ./dist/server.js",
@@ -10,11 +10,14 @@
     "lint": "eslint src --ignore-path .eslintignore --ext .ts",
     "lint:fix": "npx eslint src --fix",
     "prettier": "prettier --ignore-path .gitignore --write \"./src/**/*.+(js|ts|json)\"",
-    "prettier:fix": "npx prettier --write src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prettier:fix": "npx prettier --write src"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "bookshop",
+    "riajulpro",
+    "l2a2"
+  ],
+  "author": "riajul pro",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

@@ -1,21 +1,21 @@
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
-import { StudentRoutes } from './app/modules/student/student.route';
 
 const app: Application = express();
 
-//parsers
+// Defining the Parsers
 app.use(express.json());
 app.use(cors());
 
-// application routes
-app.use('/api/v1/students', StudentRoutes);
+// Connecting the application routes
 
-const getAController = (req: Request, res: Response) => {
-  const a = 10;
-  res.send(a);
+const checkServerStatus = (req: Request, res: Response) => {
+  res.status(200).json({
+    success: true,
+    message: 'You are in the bookShop server!',
+  });
 };
 
-app.get('/', getAController);
+app.get('/', checkServerStatus);
 
 export default app;
