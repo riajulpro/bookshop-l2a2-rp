@@ -44,4 +44,11 @@ app.use(
   },
 );
 
+app.use('*', (_req: Request, res: Response) => {
+  res.status(404).json({
+    success: false,
+    message: 'Opps! You are in the wrong path!',
+  });
+});
+
 export default app;
