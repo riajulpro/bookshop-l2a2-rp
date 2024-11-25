@@ -28,7 +28,7 @@ const bookSchema = new Schema<IBook>({
     type: Number,
     required: true,
   },
-  isStock: {
+  inStock: {
     type: Boolean,
     default: true,
   },

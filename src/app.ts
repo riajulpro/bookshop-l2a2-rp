@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from 'express';
 import { BookRoutes } from './app/modules/books/books.routes';
+import { OrderRoutes } from './app/modules/orders/orders.routes';
 
 const app: Application = express();
 
@@ -10,6 +11,7 @@ app.use(cors());
 
 // Connecting the application routes
 app.use('/api/products', BookRoutes);
+app.use('/api/orders', OrderRoutes);
 
 const checkServerStatus = (req: Request, res: Response) => {
   res.status(200).json({

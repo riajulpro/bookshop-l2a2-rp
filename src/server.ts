@@ -9,7 +9,7 @@ async function startTheServer() {
 
     app.listen(config.port, () => {
       console.log(
-        `Yahoo 😀! bookshop server is running on port ${config.port}`,
+        `Yahoo 😀! bookshop server is running on port ${config.port} \n\nCheckout the localhost: http://localhost:${config.port}`,
       );
     });
   } catch (err) {

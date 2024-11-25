@@ -5,5 +5,5 @@ export interface IBook {
   category: 'Fiction' | 'Science' | 'SelfDevelopment' | 'Poetry' | 'Religious';
   description: string;
   quantity: number;
-  isStock?: boolean;
+  inStock?: boolean;
 }
