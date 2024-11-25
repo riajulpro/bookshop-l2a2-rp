@@ -13,7 +13,7 @@ app.use(cors());
 app.use('/api/products', BookRoutes);
 app.use('/api/orders', OrderRoutes);
 
-const checkServerStatus = (req: Request, res: Response) => {
+const checkServerStatus = (_req: Request, res: Response) => {
   res.status(200).json({
     success: true,
     message: 'You are in the bookShop server!',
@@ -23,17 +23,25 @@ const checkServerStatus = (req: Request, res: Response) => {
 app.get('/', checkServerStatus);
 
 // Defining global error handler
-app.use((error: any, req: Request, res: Response, next: NextFunction) => {
-  if (error) {
-    const statusCode = error.statusCode || 500;
+app.use(
+  (
+    error: { statusCode: number; message: string; stack: [] },
+    _req: Request,
+    res: Response,
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    _next: NextFunction,
+  ) => {
+    if (error) {
+      const statusCode = error.statusCode || 500;
 
-    res.status(statusCode).json({
-      message: error.message || 'Internal Server Error',
-      success: false,
-      error: error,
-      stack: error.stack,
-    });
-  }
-});
+      res.status(statusCode).json({
+        message: error.message || 'Internal Server Error',
+        success: false,
+        error: error,
+        stack: error.stack,
+      });
+    }
+  },
+);
 
 export default app;
